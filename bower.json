@@ -1,0 +1,29 @@
+{
+  "name": "event-amd",
+  "main": "event-amd.js",
+  "version": "1.0.0",
+  "homepage": "https://github.com/elo7/event-amd",
+  "description": "A small lib to add and remove events",
+  "keywords": [
+    "js",
+    "events",
+    "attachEvent",
+    "removeEvent",
+    "addEventListener",
+    "removeEventListener"
+  ],
+  "authors": [
+    "Elo7"
+  ],
+  "license": "BSD",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "async-define": "elo7/async-define"
+  }
+}
