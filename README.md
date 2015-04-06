@@ -1,12 +1,12 @@
 # Event-amd
 
-_Event-amd string/number library_
+_Event-amd add/remove event library_
 
 Event.js is a tiny library to add and remove events in any browser. This library uses [amd](http://en.wikipedia.org/wiki/Asynchronous_module_definition) structure.
 
 ## Install
 
-Install with [Bower](http://bower.io): `bower install event-amd`
+Install with [Bower](http://bower.io): `bower install events-amd`
 
 ## Dependency
 
