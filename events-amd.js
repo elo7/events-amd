@@ -20,10 +20,12 @@ define('event', [], function() {
 	}
 
 	function removeEvent(el, eventName, named) {
-		if (named) {
-			el['_event'][eventName][named] = [];
-		} else {
-			el['_event'][eventName] = {};
+		if (el['_event']) {
+			if (named) {
+				el['_event'][eventName][named] = [];
+			} else {
+				el['_event'][eventName] = {};
+			}
 		}
 	}
 
@@ -32,8 +34,10 @@ define('event', [], function() {
 			return el['_event'][eventName][named];
 		}
 		var commands = [];
-		for (key in el['_event'][eventName]) {
-			commands = commands.concat(el['_event'][eventName][key]);
+		if (el['_event']) {
+			for (key in el['_event'][eventName]) {
+				commands = commands.concat(el['_event'][eventName][key]);
+			}
 		}
 		return commands;
 	}
