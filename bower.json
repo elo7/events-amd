@@ -1,7 +1,7 @@
 {
   "name": "events-amd",
   "main": "events-amd.js",
-  "version": "1.0.2",
+  "version": "1.0.3-SNAPSHOT",
   "homepage": "https://github.com/elo7/events-amd",
   "description": "A small lib to add and remove events",
   "keywords": [
