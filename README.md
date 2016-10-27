@@ -6,7 +6,7 @@ Event.js is a tiny library to add and remove events in any browser. This library
 
 ## Install
 
-Install with [Bower](http://bower.io): `bower install events-amd`
+Install : `npm install events-amd`
 
 ## Dependency
 

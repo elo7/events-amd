@@ -1,0 +1,109 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'publish',
+1 verbose cli   '--tag',
+1 verbose cli   'npm-publish' ]
+2 info using npm@3.7.3
+3 info using node@v6.6.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/Developer/dev/events-amd',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/Developer/.npm correctMkdir not in flight; initializing
+10 info lifecycle events-amd@1.0.3-SNAPSHOT~prepublish: events-amd@1.0.3-SNAPSHOT
+11 silly lifecycle events-amd@1.0.3-SNAPSHOT~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package.tgz',
+12 verbose tar pack   '/Users/Developer/dev/events-amd' ]
+13 verbose tarball /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package.tgz
+14 verbose folder /Users/Developer/dev/events-amd
+15 verbose addLocalTarball adding from inside cache /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package.tgz
+16 verbose correctMkdir /Users/Developer/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd events-amd@1.0.3-SNAPSHOT
+18 verbose afterAdd /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/Developer/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package/package.json written
+21 silly publish { name: 'events-amd',
+21 silly publish   version: '1.0.3-SNAPSHOT',
+21 silly publish   homepage: 'https://github.com/elo7/events-amd',
+21 silly publish   description: 'A small lib to add and remove events',
+21 silly publish   author: { name: 'Elo7' },
+21 silly publish   license: 'BSD',
+21 silly publish   keywords:
+21 silly publish    [ 'js',
+21 silly publish      'events',
+21 silly publish      'attachEvent',
+21 silly publish      'removeEvent',
+21 silly publish      'addEventListener',
+21 silly publish      'removeEventListener' ],
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+https://github.com/elo7/events-amd.git' },
+21 silly publish   ignore: [ '**/.*', 'node_modules', 'bower_components', 'test', 'tests' ],
+21 silly publish   devDependencies: { 'define-async': '1.0.5' },
+21 silly publish   readme: '# Event-amd\n\n_Event-amd add/remove event library_\n\nEvent.js is a tiny library to add and remove events in any browser. This library uses [amd](http://en.wikipedia.org/wiki/Asynchronous_module_definition) structure.\n\n## Install\n\nInstall : `npm install events-amd`\n\n## Dependency\n\nEvent-amd depends on an [amd](http://en.wikipedia.org/wiki/Asynchronous_module_definition) implementation. We suggest [async-define](https://gist.github.com/sergiolopes/5778124) implementation for dependency lookup.\n\n## Parameters\n\n#### element: DocumentElement\nEx.: document.querySelector(\'#link\')\n\n\n#### event: String\nEvent that will be added or removed from the _element_\n\nEx.: \'click\'\n\n\n#### callback: Function\nFunction that will be called when the _event_ is triggered, only for _addEvent_\n\nEx.: function(){ ... }\n\n\n#### eventCategory: String (optional)\nYou can add multiple \'_events_\' of the same type (e.g: _click_) and use the _eventCategory_ parameter to remove certain events when needed.\n\nEx.:\n\n\tevent.addEvent(element, \'click\', callback, \'tracking\');\n\n\tevent.addEvent(element, \'click\', callback, \'action\');\n\n\tevent.removeEvent(element, \'click\', \'action\');\n\n## Example\n\n``` js\ndefine([\'event\'], function(event) {\n\tevent.addEvent(element, event, callback, eventCategory);\n\tevent.removeEvent(element, event, eventCategory);\n});\n```\n\n## License\n\nEvent-amd is released under the [BSD](https://github.com/elo7/event-amd/blob/master/LICENSE). Have at it.\n\n* * *\n\nCopyright :copyright: 2015 Elo7# event-amd\n',
+21 silly publish   readmeFilename: 'README.md',
+21 silly publish   gitHead: '3325fd9fa8778e66fbaeb43d1d36cb7dd77fbe5a',
+21 silly publish   bugs: { url: 'https://github.com/elo7/events-amd/issues' },
+21 silly publish   _id: 'events-amd@1.0.3-SNAPSHOT',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: '2ff26f20ef907fe2799faa8f575dc7d803382e5c',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name events-amd
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry uri https://registry.npmjs.org/events-amd
+27 verbose publish registryBase https://registry.npmjs.org/
+28 silly publish uploading /Users/Developer/.npm/events-amd/1.0.3-SNAPSHOT/package.tgz
+29 verbose request uri https://registry.npmjs.org/events-amd
+30 verbose request sending authorization for write operation
+31 info attempt registry request try #1 at 7:51:30 PM
+32 verbose request using bearer token for auth
+33 verbose request id 51c3a9f001645ea7
+34 http request PUT https://registry.npmjs.org/events-amd
+35 http 403 https://registry.npmjs.org/events-amd
+36 verbose headers { 'content-type': 'application/json',
+36 verbose headers   'cache-control': 'max-age=300',
+36 verbose headers   'content-length': '104',
+36 verbose headers   'accept-ranges': 'bytes',
+36 verbose headers   date: 'Thu, 27 Oct 2016 21:51:31 GMT',
+36 verbose headers   via: '1.1 varnish',
+36 verbose headers   connection: 'keep-alive',
+36 verbose headers   'x-served-by': 'cache-iad2622-IAD',
+36 verbose headers   'x-cache': 'MISS',
+36 verbose headers   'x-cache-hits': '0',
+36 verbose headers   'x-timer': 'S1477605090.872369,VS0,VE534',
+36 verbose headers   vary: 'Accept-Encoding' }
+37 verbose request invalidating /Users/Developer/.npm/registry.npmjs.org/events-amd on PUT
+38 error publish Failed PUT 403
+39 verbose stack Error: "You cannot publish over the previously published version 1.0.3-SNAPSHOT." : events-amd
+39 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+39 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+39 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+39 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:199:22)
+39 verbose stack     at emitTwo (events.js:106:13)
+39 verbose stack     at Request.emit (events.js:191:7)
+39 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1036:10)
+39 verbose stack     at emitOne (events.js:101:20)
+39 verbose stack     at Request.emit (events.js:188:7)
+39 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:963:12)
+40 verbose statusCode 403
+41 verbose pkgid events-amd
+42 verbose cwd /Users/Developer/dev/events-amd
+43 error Darwin 15.6.0
+44 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish" "--tag" "npm-publish"
+45 error node v6.6.0
+46 error npm  v3.7.3
+47 error code E403
+48 error "You cannot publish over the previously published version 1.0.3-SNAPSHOT." : events-amd
+49 error If you need help, you may report this error at:
+49 error     <https://github.com/npm/npm/issues>
+50 verbose exit [ 1, true ]
