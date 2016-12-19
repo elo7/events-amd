@@ -1,6 +1,6 @@
 {
-  "name": "events-amd",
-  "version": "1.0.4-SNAPSHOT",
+  "name": "elo7-events-amd",
+  "version": "1.0.4",
   "homepage": "https://github.com/elo7/events-amd",
   "description": "A small lib to add and remove events",
   "author": "Elo7",
