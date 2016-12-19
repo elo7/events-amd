@@ -1,6 +1,6 @@
 {
   "name": "elo7-events-amd",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "homepage": "https://github.com/elo7/events-amd",
   "description": "A small lib to add and remove events",
   "author": "Elo7",
@@ -16,6 +16,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elo7/events-amd"
+  },
+  "devDependencies": {
+    "define-async": "1.1.0"
   },
   "ignore": [
     "**/.*",
