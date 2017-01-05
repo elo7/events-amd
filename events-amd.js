@@ -1,16 +1,4 @@
 define('event', [], function() {
-	var touchEventPrefix = !!window.MSInputMethodContext ? '' : 'MS';
-	var ie = {
-		'msPointerEnabled' : function() {
-			return window.navigator.msPointerEnabled || window.PointerEvent;
-		},
-		'event' : {
-			'touchstart' : touchEventPrefix + 'PointerDown',
-			'touchmove' : touchEventPrefix + 'PointerMove',
-			'touchend' : touchEventPrefix + 'PointerOut'
-		}
-	}
-
 	function addEvent(el, eventName, command, named) {
 		var named = named || 'undefined';
 		el['_event'] = el['_event'] || {};
@@ -42,16 +30,8 @@ define('event', [], function() {
 		return commands;
 	}
 
-	function validEventName(eventName) {
-		if (ie.msPointerEnabled() && ie.event[eventName]) {
-			eventName = ie.event[eventName];
-		}
-		return eventName;
-	}
-
 	return {
 		addEvent : function(el, eventName, command, named) {
-			eventName = validEventName(eventName);
 			if (el.addEventListener) {
 				el.addEventListener(eventName, command);
 				addEvent(el, eventName, command, named);
@@ -64,7 +44,6 @@ define('event', [], function() {
 			}
 		},
 		removeEvent : function(el, eventName, named) {
-			eventName = validEventName(eventName);
 			var commands = eventsCommandsFor(el, eventName, named);
 			for (var i = 0; i < commands.length; i++) {
 				if (el.removeEventListener) {
