@@ -20,17 +20,22 @@ define('event', [], function() {
 	}
 
 	function eventsCommandsFor(el, eventName, named) {
-		var commands = [];
 		if (el['_event']) {
-			if (named) {
-				return el['_event'][eventName]? el['_event'][eventName][named] : []
-			}
+			return []
+		}
 
+		if (named) {
+			if(el['_event'][eventName] && el['_event'][eventName][named]) {
+				return el['_event'][eventName][named];
+			}
+			return [];
+		} else {
+			var commands = [];
 			for (key in el['_event'][eventName]) {
 				commands = commands.concat(el['_event'][eventName][key]);
 			}
+			return commands;
 		}
-		return commands;
 	}
 
 	return {
@@ -42,7 +47,7 @@ define('event', [], function() {
 				var newCommand = function() {
 					return command.apply(el, arguments);
 				};
-				el.attachEvent("on" + eventName, newCommand);
+				el.attachEvent('on' + eventName, newCommand);
 				addEvent(el, eventName, newCommand, named);
 			}
 		},
