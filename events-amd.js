@@ -9,7 +9,7 @@ define('event', [], function() {
 
 	function removeEvent(el, eventName, named) {
 		if (el['_event']) {
-			if (named) {
+			if (named && el['_event'][eventName]) {
 				el['_event'][eventName][named] = [];
 			} else {
 				el['_event'][eventName] = {};
@@ -19,7 +19,10 @@ define('event', [], function() {
 
 	function eventsCommandsFor(el, eventName, named) {
 		if (named) {
-			return el['_event'][eventName][named];
+			if (el['_event'] && el['_event'][eventName]) {
+				return el['_event'][eventName][named] || [];
+			}
+			return [];
 		}
 		var commands = [];
 		if (el['_event']) {
