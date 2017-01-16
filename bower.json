@@ -12,6 +12,10 @@
     "addEventListener",
     "removeEventListener"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/elo7/events-amd.git"
+  },
   "authors": [
     "Elo7"
   ],
