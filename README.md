@@ -6,11 +6,11 @@ Event.js is a tiny library to add and remove events in any browser. This library
 
 ## Install
 
-Install with [Bower](http://bower.io): `bower install events-amd`
+Install : `npm install elo7-events-amd`
 
 ## Dependency
 
-Event-amd depends on an [amd](http://en.wikipedia.org/wiki/Asynchronous_module_definition) implementation. We suggest [async-define](https://gist.github.com/sergiolopes/5778124) implementation for dependency lookup.
+Event-amd depends on an [amd](http://en.wikipedia.org/wiki/Asynchronous_module_definition) implementation. We suggest [define-async](https://www.npmjs.com/package/define-async) implementation for dependency lookup.
 
 ## Parameters
 
