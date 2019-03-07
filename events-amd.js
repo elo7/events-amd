@@ -34,9 +34,13 @@ define('event', [], function() {
 	}
 
 	return {
-		addEvent : function(el, eventName, command, named) {
+		addEvent : function(el, eventName, command, named, passive) {
 			if (el.addEventListener) {
-				el.addEventListener(eventName, command);
+				if (passive){
+					el.addEventListener(eventName, command, { 'passive': passive });
+				} else {
+					el.addEventListener(eventName, command);
+				}
 				addEvent(el, eventName, command, named);
 			} else {
 				var newCommand = function() {
