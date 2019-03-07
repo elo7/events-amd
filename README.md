@@ -41,11 +41,18 @@ Ex.:
 
 	event.removeEvent(element, 'click', 'action');
 
+#### passive: Boolean (optional)
+If _true_, indicates that the function specified by listener will never call preventDefault()
+
+Ex.:
+
+	event.addEvent(element, 'click', callback, 'tracking', true);
+
 ## Example
 
 ``` js
 define(['event'], function(event) {
-	event.addEvent(element, event, callback, eventCategory);
+	event.addEvent(element, event, callback, eventCategory, passive);
 	event.removeEvent(element, event, eventCategory);
 });
 ```
