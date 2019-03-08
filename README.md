@@ -30,29 +30,39 @@ Function that will be called when the _event_ is triggered, only for _addEvent_
 Ex.: function(){ ... }
 
 
-#### eventCategory: String (optional)
-You can add multiple '_events_' of the same type (e.g: _click_) and use the _eventCategory_ parameter to remove certain events when needed.
+#### configs: Object (optional) or String (optional)
+You can pass a config with the following parameters:
+
+- named: like eventCategory
+	You can add multiple '_events_' of the same type (e.g: _click_) and use the _eventCategory_ parameter to remove certain events when needed.
+
+	Ex.:
+		event.addEvent(element, 'click', callback, { named: 'tracking' });
+
+- passive: Boolean (optional)
+	If _true_, indicates that the function specified by listener will never call preventDefault()
+
+	Ex.:
+		event.addEvent(element, 'click', callback, { passive: true });
 
 Ex.:
+	event.addEvent(element, 'click', callback, { named: 'tracking', passive: true });
 
-	event.addEvent(element, 'click', callback, 'tracking');
 
-	event.addEvent(element, 'click', callback, 'action');
+Or you can use the shorthand and only pass the eventCategory as parameter.
 
-	event.removeEvent(element, 'click', 'action');
+	Ex.:
 
-#### passive: Boolean (optional)
-If _true_, indicates that the function specified by listener will never call preventDefault()
+		event.addEvent(element, 'click', callback, 'tracking');
+		event.addEvent(element, 'click', callback, 'action');
+		event.removeEvent(element, 'click', 'action');
 
-Ex.:
-
-	event.addEvent(element, 'click', callback, 'tracking', true);
 
 ## Example
 
 ``` js
 define(['event'], function(event) {
-	event.addEvent(element, event, callback, eventCategory, passive);
+	event.addEvent(element, event, callback, eventCategory);
 	event.removeEvent(element, event, eventCategory);
 });
 ```

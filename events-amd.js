@@ -34,10 +34,17 @@ define('event', [], function() {
 	}
 
 	return {
-		addEvent : function(el, eventName, command, named, passive) {
+		addEvent : function(el, eventName, command, namedOrConfigs) {
+			var named;
+			if (typeof namedOrConfigs === "string") {
+				named = namedOrConfigs;
+			} else if (typeof namedOrConfigs === "object") {
+				named = namedOrConfigs.named;
+			}
+
 			if (el.addEventListener) {
-				if (passive){
-					el.addEventListener(eventName, command, { 'passive': passive });
+				if (namedOrConfigs && namedOrConfigs.passive){
+					el.addEventListener(eventName, command, { passive: namedOrConfigs.passive });
 				} else {
 					el.addEventListener(eventName, command);
 				}
