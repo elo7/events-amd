@@ -44,7 +44,7 @@ define('event', [], function() {
 
 			if (el.addEventListener) {
 				if (namedOrConfigs && namedOrConfigs.passive){
-					el.addEventListener(eventName, command, { passive: namedOrConfigs.passive });
+					el.addEventListener(eventName, command, namedOrConfigs);
 				} else {
 					el.addEventListener(eventName, command);
 				}
