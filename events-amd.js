@@ -33,17 +33,35 @@ define('event', [], function() {
 		return commands;
 	}
 
+	function supportsPassive() {
+		var supportsPassive = false;
+		try {
+			var opts = Object.defineProperty({}, 'passive', {
+				get: function() {
+					supportsPassive = true;
+				}
+			});
+			window.addEventListener("testPassive", null, opts);
+			window.removeEventListener("testPassive", null, opts);
+		} catch (e) {}
+
+		return supportsPassive;
+	}
+
 	return {
 		addEvent : function(el, eventName, command, namedOrConfigs) {
 			var named;
-			if (typeof namedOrConfigs === "string") {
+			if (typeof namedOrConfigs === 'string') {
 				named = namedOrConfigs;
-			} else if (typeof namedOrConfigs === "object") {
+			} else if (typeof namedOrConfigs === 'object') {
 				named = namedOrConfigs.named;
 			}
 
 			if (el.addEventListener) {
-				if (namedOrConfigs && namedOrConfigs.passive){
+				if (typeof namedOrConfigs === 'object'){
+					if(namedOrConfigs.passive && !supportsPassive()) {
+						delete namedOrConfigs.passive;
+					}
 					el.addEventListener(eventName, command, namedOrConfigs);
 				} else {
 					el.addEventListener(eventName, command);
@@ -53,7 +71,7 @@ define('event', [], function() {
 				var newCommand = function() {
 					return command.apply(el, arguments);
 				};
-				el.attachEvent("on" + eventName, newCommand);
+				el.attachEvent('on' + eventName, newCommand);
 				addEvent(el, eventName, newCommand, named);
 			}
 		},
