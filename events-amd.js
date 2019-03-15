@@ -11,6 +11,7 @@ define('event', [], function() {
 		if (el['_event']) {
 			if (named && el['_event'][eventName]) {
 				el['_event'][eventName][named] = [];
+				delete el['_event'][eventName][named];
 			} else {
 				el['_event'][eventName] = {};
 			}
