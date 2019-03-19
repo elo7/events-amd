@@ -40,7 +40,8 @@ You can pass a config with the following parameters:
 		event.addEvent(element, 'click', callback, { named: 'tracking' });
 
 - passive: Boolean (optional)
-	If _true_, indicates that the function specified by listener will never call preventDefault()
+	If _true_, indicates that the function specified by listener will never call preventDefault().
+	Only works on `addEvent`
 
 	Ex.:
 		event.addEvent(element, 'click', callback, { passive: true });
@@ -57,6 +58,7 @@ Or you can use the shorthand and only pass the eventCategory as parameter.
 		event.addEvent(element, 'click', callback, 'action');
 		event.removeEvent(element, 'click', 'action');
 
+* `removeEvent` only supports Strings as last parameter
 
 ## Example
 

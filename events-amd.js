@@ -1,17 +1,19 @@
 define('event', [], function() {
-	function addEvent(el, eventName, command, named) {
+	function addEvent(el, eventName, command, named, opts) {
 		var named = named || 'undefined';
 		el['_event'] = el['_event'] || {};
 		el['_event'][eventName] = el['_event'][eventName] || {};
 		el['_event'][eventName][named] = el['_event'][eventName][named] || [];
-		el['_event'][eventName][named].push(command);
+		el['_event'][eventName][named].push({
+			command: command,
+			opts: opts,
+		});
 	}
 
 	function removeEvent(el, eventName, named) {
 		if (el['_event']) {
 			if (named && el['_event'][eventName]) {
 				el['_event'][eventName][named] = [];
-				delete el['_event'][eventName][named];
 			} else {
 				el['_event'][eventName] = {};
 			}
@@ -34,7 +36,7 @@ define('event', [], function() {
 		return commands;
 	}
 
-	function supportsPassive() {
+	function supportsEventOptions() {
 		var supportsPassive = false;
 		try {
 			var opts = Object.defineProperty({}, 'passive', {
@@ -42,8 +44,8 @@ define('event', [], function() {
 					supportsPassive = true;
 				}
 			});
-			window.addEventListener("testPassive", null, opts);
-			window.removeEventListener("testPassive", null, opts);
+			window.addEventListener('testPassive', null, opts);
+			window.removeEventListener('testPassive', null, opts);
 		} catch (e) {}
 
 		return supportsPassive;
@@ -51,23 +53,22 @@ define('event', [], function() {
 
 	return {
 		addEvent : function(el, eventName, command, namedOrConfigs) {
-			var named;
+			var named, opts;
 			if (typeof namedOrConfigs === 'string') {
 				named = namedOrConfigs;
 			} else if (typeof namedOrConfigs === 'object') {
 				named = namedOrConfigs.named;
+				opts = namedOrConfigs;
 			}
 
 			if (el.addEventListener) {
-				if (typeof namedOrConfigs === 'object'){
-					if(namedOrConfigs.passive && !supportsPassive()) {
-						delete namedOrConfigs.passive;
-					}
+				if (typeof namedOrConfigs === 'object' && supportsEventOptions()) {
 					el.addEventListener(eventName, command, namedOrConfigs);
+					addEvent(el, eventName, command, named, opts);
 				} else {
 					el.addEventListener(eventName, command);
+					addEvent(el, eventName, command, named);
 				}
-				addEvent(el, eventName, command, named);
 			} else {
 				var newCommand = function() {
 					return command.apply(el, arguments);
@@ -80,9 +81,13 @@ define('event', [], function() {
 			var commands = eventsCommandsFor(el, eventName, named);
 			for (var i = 0; i < commands.length; i++) {
 				if (el.removeEventListener) {
-					el.removeEventListener(eventName, commands[i]);
+					if (commands[i].opts) {
+						el.removeEventListener(eventName, commands[i].command, commands[i].opts);
+					} else {
+						el.removeEventListener(eventName, commands[i].command);
+					}
 				} else {
-					el.detachEvent('on' + eventName, commands[i]);
+					el.detachEvent('on' + eventName, commands[i].command);
 				}
 			}
 			removeEvent(el, eventName, named);
