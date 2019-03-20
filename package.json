@@ -1,6 +1,6 @@
 {
   "name": "elo7-events-amd",
-  "version": "1.2.0",
+  "version": "1.2.1-SNAPSHOT",
   "license": "BSD-3-Clause",
   "homepage": "https://github.com/elo7/events-amd",
   "description": "A small lib to add and remove events",
