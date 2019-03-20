@@ -75,4 +75,4 @@ Event-amd is released under the [BSD](https://github.com/elo7/event-amd/blob/mas
 
 * * *
 
-Copyright :copyright: 2015 Elo7# event-amd
+Copyright :copyright: 2019 Elo7# event-amd
